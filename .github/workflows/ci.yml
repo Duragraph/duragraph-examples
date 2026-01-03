@@ -159,7 +159,7 @@ jobs:
           if [ -f "$example_dir/requirements.txt" ]; then
             echo "Validating requirements in $example_dir"
             cd "$example_dir"
-            uv pip install --dry-run -r requirements.txt
+            uv pip install --dry-run --system -r requirements.txt
             cd ../..
           fi
         done
