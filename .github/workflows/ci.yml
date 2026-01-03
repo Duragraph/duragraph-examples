@@ -159,7 +159,10 @@ jobs:
           if [ -f "$example_dir/requirements.txt" ]; then
             echo "Validating requirements in $example_dir"
             cd "$example_dir"
-            uv pip install --dry-run --system -r requirements.txt
+            # Create temporary venv for validation
+            uv venv .temp_venv
+            uv pip install --dry-run -r requirements.txt
+            rm -rf .temp_venv
             cd ../..
           fi
         done
